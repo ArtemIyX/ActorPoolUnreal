@@ -116,4 +116,10 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category="ActorPool")
 	virtual void ReturnActor(AActor* InActor);
+
+	UFUNCTION(BlueprintCallable, Category="ActorPool")
+	int32 GetPoolNum() const;
+
+	UFUNCTION(BlueprintCallable, Category="ActorPool")
+	int32 GetActiveNum() const;
 };

@@ -57,12 +57,10 @@ AActor* AAbstractActorPool::MakeActor_Implementation()
 
 void AAbstractActorPool::OnRep_Pool()
 {
-	
 }
 
 void AAbstractActorPool::OnRep_Active()
 {
-	
 }
 
 void AAbstractActorPool::InitializePool()
@@ -116,4 +114,14 @@ void AAbstractActorPool::ReturnActor(AActor* InActor)
 		MARK_PROPERTY_DIRTY_FROM_NAME(AAbstractActorPool, Pool, this);
 		MARK_PROPERTY_DIRTY_FROM_NAME(AAbstractActorPool, Active, this);
 	}
+}
+
+int32 AAbstractActorPool::GetPoolNum() const
+{
+	return Pool.Num();
+}
+
+int32 AAbstractActorPool::GetActiveNum() const
+{
+	return Active.Num();
 }
