@@ -9,7 +9,7 @@
 class AAbstractActorPool;
 // This class does not need to be modified.
 UINTERFACE()
-class UPoolActor : public UInterface
+class UPoolable : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -17,7 +17,7 @@ class UPoolActor : public UInterface
 /**
  * 
  */
-class ACTORPOOL_API IPoolActor
+class ACTORPOOL_API IPoolable
 {
 	GENERATED_BODY()
 

@@ -70,9 +70,9 @@ void AAbstractActorPool::InitializePool()
 	for (int32 i = 0; i < PoolSize; ++i)
 	{
 		AActor* newActor = MakeActor();
-		if (IsValid(newActor) && newActor->Implements<UPoolActor>())
+		if (IsValid(newActor) && newActor->Implements<UPoolable>())
 		{
-			IPoolActor::Execute_DeActivePoolActor(newActor);
+			IPoolable::Execute_DeActivePoolActor(newActor);
 			Pool.Add(newActor);
 		}
 	}
@@ -93,9 +93,9 @@ AActor* AAbstractActorPool::GetActorFromPool()
 	if (IsValid(act))
 	{
 		Active.Add(act);
-		if (act->Implements<UPoolActor>())
+		if (act->Implements<UPoolable>())
 		{
-			IPoolActor::Execute_ActivatePoolActor(act, this);
+			IPoolable::Execute_ActivatePoolActor(act, this);
 		}
 	}
 	MARK_PROPERTY_DIRTY_FROM_NAME(AAbstractActorPool, Pool, this);
@@ -107,9 +107,9 @@ void AAbstractActorPool::ReturnActor(AActor* InActor)
 {
 	if (IsValid(InActor))
 	{
-		if (InActor->Implements<UPoolActor>())
+		if (InActor->Implements<UPoolable>())
 		{
-			IPoolActor::Execute_DeActivePoolActor(InActor);
+			IPoolable::Execute_DeActivePoolActor(InActor);
 		}
 		Active.Remove(InActor);
 		Pool.Add(InActor);
