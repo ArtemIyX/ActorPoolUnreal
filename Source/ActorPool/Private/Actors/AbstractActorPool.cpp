@@ -32,6 +32,28 @@ void AAbstractActorPool::BeginPlay()
 	}
 }
 
+void AAbstractActorPool::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	for (auto el : Pool)
+	{
+		if (IsValid(el))
+		{
+			el->Destroy();
+		}
+	}
+	for (auto el : Active)
+	{
+		if (IsValid(el))
+		{
+			el->Destroy();
+		}
+	}
+	Pool.Empty();
+	Active.Empty();
+	Super::EndPlay(EndPlayReason);
+}
+
+
 void AAbstractActorPool::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
