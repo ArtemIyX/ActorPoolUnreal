@@ -9,7 +9,7 @@
 class AAbstractActorPool;
 // This class does not need to be modified.
 UINTERFACE()
-class UPoolable : public UInterface
+class ACTORPOOL_API UPoolable : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -29,4 +29,7 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void DeActivePoolActor();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void RequestReturn();
 };
